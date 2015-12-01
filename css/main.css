@@ -103,12 +103,15 @@ body {
 }
 
 .product { height: 300px;
-    margin: 10px 0px;
     padding: 10px;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #efefef;
 }
 
 .product-list {
     list-style: none;
+    padding: 0px;
 }
 
 .product-list li {
@@ -116,7 +119,17 @@ body {
 }
 
 .page-select {
-    padding-top: 20px;
+    padding: 20px 0 0 40px;
+    float: left;
+}
+
+.centered-container {
+    margin  : 0 auto;
+    display : table;
+}
+
+.text-colored a {
+    color: #f3a025;
 }
 
 /* Footer Styles */
@@ -133,4 +146,10 @@ footer {
     }
 
     .logo { padding-left: 10px;}
+}
+
+/* override bootstrap */
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
+    background-color: #f3a025;
+    border-color: #f3a025;
 }

@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('challenge2').directive('pagination', [
+angular.module('challenge2').directive('customPagination', [
 	function() {
 
 		return {
 			templateUrl: 'app/partials/pagination.html',
 			restrict: 'A',
 			scope: {
-				callback       : '&pagination',
+				callback       : '&customPagination',
 				pageManager    : '=manager',
 				promiseMonitor : '=monitor'
 			},
@@ -24,7 +24,7 @@ angular.module('challenge2').directive('pagination', [
 						if(i < 1)
 							pageMax++;
 						else if(i >= scope.pageManager.numberOfPages)
-							scope.pages.splice(0, pageMin - (i -scope.pageManager.pageNumber));
+							scope.pages.splice(0, 0, scope.pages[0] - 1);
 						else
 							scope.pages.push(i);
 					}	

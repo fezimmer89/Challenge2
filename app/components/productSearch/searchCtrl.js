@@ -1,13 +1,9 @@
 'use strict';
 
-angular.module('challenge2').controller('searchCtrl', [ '$scope', '$http', 'promiseMonitor',
-	function($scope, $http, PromiseMonitor) {
+angular.module('challenge2').controller('searchCtrl', [ '$scope', '$http', 'promiseMonitor', 'pageManager',
+	function($scope, $http, PromiseMonitor, PageManager) {
 
-		$scope.pageManager = {
-			pageSize   : 24,
-			pageNumber : 1
-		};
-
+		$scope.pageManager    = new PageManager();
 		$scope.promiseMonitor = new PromiseMonitor();
 
 		function fetchData(query){
@@ -20,7 +16,7 @@ angular.module('challenge2').controller('searchCtrl', [ '$scope', '$http', 'prom
 		function fetchCount(query){
 			return $http({
 				method : 'GET',
-				url    : ('http://api.vip.supplyhub.com:19000/products?search=' + query.search + '&count=1')
+				url    : ('http://api.vip.supplyhub.com:19000/products?search=' + query.search + '&count=1&skip=' + query.skip)
 			});
 		}
 
@@ -31,11 +27,12 @@ angular.module('challenge2').controller('searchCtrl', [ '$scope', '$http', 'prom
 
 		$scope.search = function(searchTerm){
 			var query = {
-				search: searchTerm || $scope.searchTerm || 'a',
-				limit: $scope.pageManager.pageSize,
-				skip: ($scope.pageManager.pageNumber * $scope.pageManager.pageSize) - 10
+				search : searchTerm || $scope.searchTerm || 'a',
+				limit  : $scope.pageManager.pageSize,
+				skip   : $scope.pageManager.getSkipVal()
 			};
 
+			// returning deferred so that it can be used by any calling function to monitor this promise (e.g. the paginationDirective)
 			if(query.search !== ''){
 				var deferred = 				
 					fetchData(query)
@@ -44,7 +41,7 @@ angular.module('challenge2').controller('searchCtrl', [ '$scope', '$http', 'prom
 						return fetchCount(query);
 					})
 					.then(function(results){
-						$scope.pageManager.numberOfPages = Math.ceil(results.data.count / $scope.pageManager.pageSize);
+						$scope.pageManager.updatePageSize(results.data.count);
 					});
 
 				$scope.promiseMonitor.monitor(deferred);

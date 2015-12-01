@@ -2,7 +2,8 @@
 
 angular.module('challenge2', [
   'ngRoute',
-  'ngSanitize'
+  'ngSanitize',
+  'ui.bootstrap'
 ])
 .config(['$routeProvider', function ($routeProvider) {
   $routeProvider
