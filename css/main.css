@@ -1,7 +1,7 @@
-
 /* Global Styles */
 
-html, body {
+html,
+body {
     height: 100%;
 }
 
@@ -11,9 +11,8 @@ body {
 }
 
 .dropdown {
-    cursor:pointer;
+    cursor: pointer;
 }
-
 
 .img-home-portfolio,
 .img-customer,
@@ -25,7 +24,9 @@ body {
     margin-top: 15px;
 }
 
+
 /* Page Sections */
+
 .section,
 .section-colored {
     padding: 50px 0;
@@ -45,17 +46,23 @@ body {
     border: 1px solid #cccccc;
 }
 
+
 /* Service Page Styles */
+
 .service-icon {
     font-size: 50px;
 }
 
+
 /* 404 Page Styles */
+
 .error-404 {
     font-size: 8em;
 }
 
+
 /* Pricing Page Styles */
+
 .price {
     font-size: 4em;
 }
@@ -70,16 +77,36 @@ body {
     font-style: italic;
 }
 
-.logo { padding-top: 5px;}
+.logo {
+    padding-top: 5px;
+}
 
-.bars { margin-top: 11px;}
-.active { color:white!important;}
+.bars {
+    margin-top: 11px;
+}
 
-.padding-top { padding-top: 20px;}
+.active {
+    color: white!important;
+}
 
-.productImage img { max-width: 200px; max-height: 200px; margin-bottom: 10px;}
+.padding-top {
+    padding-top: 20px;
+}
 
-.description p { 
+.productImage {
+    min-height: 210px;
+}
+
+.productImage img {
+    max-width: 200px;
+    max-height: 200px;
+    margin-bottom: 10px;
+    position: absolute;
+    left: 30px;
+    bottom: 0;
+}
+
+.description p {
     display: -webkit-box;
     max-width: 400px;
     height: 54.6px;
@@ -102,11 +129,13 @@ body {
     text-overflow: ellipsis;
 }
 
-.product { height: 300px;
+.product {
+    height: 312px;
     padding: 10px;
     border-style: dashed;
     border-width: 1px;
     border-color: #efefef;
+    overflow: hidden;
 }
 
 .product-list {
@@ -124,32 +153,52 @@ body {
 }
 
 .centered-container {
-    margin  : 0 auto;
-    display : table;
+    margin: 0 auto;
+    display: table;
 }
 
 .text-colored a {
     color: #f3a025;
 }
 
+
 /* Footer Styles */
+
 footer {
     margin: 50px 0;
 }
 
-/* Responsive Styles */
-@media (max-width: 767px) {
 
+/* Responsive Styles */
+
+@media (max-width: 767px) {
     .carousel {
         height: 70%;
         /* increases the carousel height so it looks good on phones */
     }
-
-    .logo { padding-left: 10px;}
+    .logo {
+        padding-left: 10px;
+    }
 }
 
+
 /* override bootstrap */
-.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
+
+.pagination>.active>a,
+.pagination>.active>span,
+.pagination>.active>a:hover,
+.pagination>.active>span:hover,
+.pagination>.active>a:focus,
+.pagination>.active>span:focus {
     background-color: #f3a025;
     border-color: #f3a025;
+}
+
+.pagination>li>a,
+.pagination>li>span {
+    color: #000;
+}
+
+.input-group-addon:first-child {
+    background-color: #f3a025;
 }

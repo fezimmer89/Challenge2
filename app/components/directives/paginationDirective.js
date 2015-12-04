@@ -33,7 +33,7 @@ angular.module('challenge2').directive('customPagination', [
 				scope.getPage = function(pageNumber){
 					scope.pageManager.pageNumber = pageNumber;
 
-					scope.callback()
+					return scope.callback()
 						.then(function(){
 							updatePageList();
 						});
