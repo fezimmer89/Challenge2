@@ -125,6 +125,9 @@ The easiest way to run the unit tests is to use the supplied npm script:
 npm test
 ```
 
+NOTE: running with VS 2013 installed use --msvs_version=2013
+
+
 This script will start the Karma test runner to execute the unit tests. Moreover, Karma will sit and
 watch the source and test files for changes and then re-run the tests whenever any of them change.
 This is the recommended strategy; if your unit tests are being run every time you save a file then
