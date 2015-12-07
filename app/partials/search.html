@@ -18,7 +18,11 @@
                     <li class="col-md-3 col-sm-4 col-xs-6" data-ng-repeat="product in products" ng-init="products = []">
                         <div class="row product text-center">
                             <div class="col-sm-12 productImage">
-                                <img ng-src="{{::product.product.photo || 'http://andresgaleano.eu/wp-content/uploads/2015/09/show.jpg'}}" />
+                                <div class="img-container-outter">
+                                    <div class="img-container-inner">
+                                        <img ng-src="{{::product.product.photo || 'http://andresgaleano.eu/wp-content/uploads/2015/09/show.jpg'}}" />
+                                    </div>
+                                </div>
                             </div>
                             <h4>{{::product.product.name}}</h4>
                             <div class="title" uib-popover="{{::product.brand.name }}" popover-trigger="mouseenter">
@@ -33,7 +37,7 @@
                 <span ng-if="products.length == 0">No products matched your search...</span>
             </div>
         </div>
-        <div class="row" ng-show="pageManager.numberOfPages > 1" data-custom-pagination="search()" data-manager="pageManager" data-monitor="promiseMonitor">
+        <div class="row" data-custom-pagination="search()" data-manager="pageManager" data-monitor="promiseMonitor">
         </div>
     </div>
 </div>

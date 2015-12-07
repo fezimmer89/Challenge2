@@ -1,5 +1,5 @@
-<div class="container">
-    <div class="centered-container">
+<div class="container" ng-if="pageManager.numberOfPages > 1" ng-init="init()">
+    <div class="centered-container" ng-if="pages.length > 0">
         <ul class="pagination pull-left">
             <li ng-class="{'disabled' : pageManager.pageNumber == 1 || promiseMonitor.isPending()}"><a href="" aria-label="Previous" ng-click="getPage(pageManager.pageNumber-1)"><span aria-hidden="true">&laquo;</span></a></li>
             <li ng-repeat="pageNum in pages" ng-class="{ 'active' : pageManager.pageNumber == pageNum, 'disabled' : promiseMonitor.isPending() }"><a href="" ng-click="getPage(pageNum)">{{pageNum}}</a></li>

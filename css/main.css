@@ -97,14 +97,24 @@ body {
     min-height: 210px;
 }
 
-.productImage img {
-    max-width: 200px;
-    max-height: 200px;
+.img-container-outter {
     margin-bottom: 10px;
     position: absolute;
-    left: 30px;
+    left: 50%;
     bottom: 0;
 }
+
+.img-container-inner {
+    margin-bottom: 10px;
+    position: relative;
+    left: -50%;
+}
+
+.productImage img {    
+    max-width: 200px;
+    max-height: 200px;
+    padding-top: 10px;
+}   
 
 .description p {
     display: -webkit-box;
@@ -127,6 +137,12 @@ body {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+@-moz-document url-prefix() { 
+    .title {
+        white-space: nowrap;
+    }
 }
 
 .product {
@@ -194,9 +210,15 @@ footer {
     border-color: #f3a025;
 }
 
-.pagination>li>a,
-.pagination>li>span {
+.pagination>li>a:hover, .pagination>li>span:hover {
     color: #000;
+    border-color: #ddd;
+}
+
+
+.pagination>li>a, .pagination>li>span, .pagination>li>a:focus, .pagination>li>span:focus {
+    color: #000;
+    background-color: #fff;
 }
 
 .input-group-addon:first-child {

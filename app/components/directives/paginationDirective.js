@@ -14,24 +14,27 @@ angular.module('challenge2').directive('customPagination', [
 			link: function(scope, element, attrs){
 
 				scope.options = [12, 24, 48, 96];
+				scope.pages = [];
 
 				function updatePageList(){
-					scope.pages = [];
-					var pageMin = scope.pageManager.pageNumber - 3;
-					var pageMax = scope.pageManager.pageNumber + 3;
+					if(scope.pageManager.numberOfPages > 1){
+						var pageMin = scope.pageManager.pageNumber - 3;
+						var pageMax = scope.pageManager.pageNumber + 3;
 
-					for(var i = pageMin; i < pageMax; i++){
-						if(i < 1)
-							pageMax++;
-						else if(i >= scope.pageManager.numberOfPages)
-							scope.pages.splice(0, 0, scope.pages[0] - 1);
-						else
-							scope.pages.push(i);
-					}	
+						for(var i = pageMin; i < pageMax; i++){
+							if(i < 1)
+								pageMax++;
+							else if(i >= scope.pageManager.numberOfPages)
+								scope.pages.splice(0, 0, scope.pages[0] - 1);
+							else
+								scope.pages.push(i);
+						}
+					}
 				}
 
 				scope.getPage = function(pageNumber){
 					scope.pageManager.pageNumber = pageNumber;
+					scope.pages = [];
 
 					return scope.callback()
 						.then(function(){
@@ -39,8 +42,9 @@ angular.module('challenge2').directive('customPagination', [
 						});
 				};
 
-				//init Pages array
-				updatePageList();
+				scope.init = function(){
+					updatePageList();
+				};
 			}
 		};		
 	}

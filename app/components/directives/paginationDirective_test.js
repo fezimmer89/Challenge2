@@ -2,14 +2,14 @@
 
 describe('challenge2 module', function() {
 
-    var scope, $q;
+    var scope, $q, state;
 
     beforeEach(module('challenge2'));
+    beforeEach(module('stateMock'));
     beforeEach(module("app/partials/pagination.html"));
 
-
     function scopeFactory(scope, $compile) {
-    	//mocked functions
+        //mocked functions
         scope.search = function() {
             var deferred = $q.defer();
 
@@ -32,6 +32,7 @@ describe('challenge2 module', function() {
         scope.pageManager = {
             pageNumber: 1,
             pageSize: 10,
+            numberOfPages: 10
         };
 
         var element = angular.element("<div data-custom-pagination='search()' data-manager='pageManager' data-monitor='promiseMonitor'></div>");
@@ -40,10 +41,11 @@ describe('challenge2 module', function() {
         return element.isolateScope();
     }
 
-    beforeEach(inject(function(_$compile_, $rootScope, _$q_) {
+    beforeEach(inject(function(_$q_, _$state_, _$compile_, $rootScope){
         $q = _$q_;
-        scope = scopeFactory($rootScope, _$compile_);
+        state = _$state_;
 
+        scope = scopeFactory($rootScope, _$compile_);
     }));
 
     describe('custom-pagination directive: after init', function() {

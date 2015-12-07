@@ -5,11 +5,11 @@ module.exports = function(config){
 
     files : [
       'app/bower_components/angular/angular.js',
-      'app/bower_components/angular-route/angular-route.js',
+      'app/bower_components/ui-router/release/angular-ui-router.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
-      'app/bower_components/angular-sanitize/angular-sanitize.js',
       'app/bower_components/angular-bootstrap/ui-bootstrap.js',
       'app/main.js',
+      'app/stateMock.js',
       'app/partials/*.html',
       'app/components/**/*.js',
     ],
@@ -39,8 +39,8 @@ module.exports = function(config){
     },
 
     // ngHtml2JsPreprocessor: { 
-    //   stripPrefix: 'app/', 
-    //   moduleName: 'my.templates' 
+    //   moduleName: 'templates',
+    //   stripPrefix: 'app/'
     // },
 
   });
